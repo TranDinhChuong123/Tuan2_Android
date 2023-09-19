@@ -1,0 +1,49 @@
+// Promise 1: Gọi API 1
+const promise1 = new Promise((resolve, reject) => {
+    fetch('https://api.example.com/api1')
+        .then(response => response.json())
+        .then(data => {
+            resolve(data);
+        })
+        .catch(error => {
+            reject(error);
+        });
+});
+
+// Promise 2: Gọi API 2
+const promise2 = new Promise((resolve, reject) => {
+    fetch('https://api.example.com/api2')
+        .then(response => response.json())
+        .then(data => {
+            resolve(data);
+        })
+        .catch(error => {
+            reject(error);
+        });
+});
+
+// Promise 3: Gọi API 3
+const promise3 = new Promise((resolve, reject) => {
+    fetch('https://api.example.com/api3')
+        .then(response => response.json())
+        .then(data => {
+            resolve(data);
+        })
+        .catch(error => {
+            reject(error);
+        });
+});
+
+// Sử dụng Promise.all để đợi tất cả các Promise hoàn thành
+Promise.all([promise1, promise2, promise3])
+    .then(results => {
+        // Tất cả các Promise đã hoàn thành thành công
+        const [data1, data2, data3] = results;
+        console.log('Data from API 1:', data1);
+        console.log('Data from API 2:', data2);
+        console.log('Data from API 3:', data3);
+    })
+    .catch(errors => {
+        // Một trong các Promise có lỗi
+        console.error('Error:', errors);
+    });
